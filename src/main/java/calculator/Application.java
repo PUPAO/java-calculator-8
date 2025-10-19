@@ -29,7 +29,19 @@ public class Application {
         for(String s : word) {
             if(s.isEmpty())
                 continue;
-            sum+=Integer.parseInt(s);
+
+            int number;
+            // 구분자가 아닌 문자 여부 판별
+            try {
+                number = Integer.parseInt(s);
+            } catch(Exception e){
+                throw new IllegalArgumentException();
+            }
+            // 숫자 사이에 0 혹은 음수 판별
+            if(number <= 0 ){
+                throw new IllegalArgumentException();
+            }
+            sum += number;
         }
 
         System.out.println("결과 : " + sum);
