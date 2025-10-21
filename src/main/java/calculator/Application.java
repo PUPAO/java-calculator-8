@@ -19,6 +19,11 @@ public class Application {
             }
 
             String separator = inputStr.substring(startLocation + 2, endLocation);
+
+            if (".$|()[{^?*+\\".contains(separator)) {
+                separator = "\\%s".formatted(separator); // 원래 코드: "\\"+dividedWord;
+            }
+
             separatorList.append("|").append(separator);
             lastLocation = endLocation;
         }
